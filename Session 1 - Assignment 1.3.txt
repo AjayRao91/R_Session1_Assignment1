@@ -1,0 +1,28 @@
+1.What are the different methods to call a function in R?
+Ans : If a predefined function saved as myfrstfunc.r we can call teh function using the below command
+> source("myfrstfunc.r")
+Also we can set a function and call it with the below commands
+
+> v <- c(1,2,2,4)
+> M <- cbind(c(1,0,1,1), c(2,4,3,1), c(3,2,4,5), c(2,7,8,9)
+myfrstfunc <- function(v,M)
+{
+  u=c(0,0,0,0)
+  for(i in 1:4)
+   {
+     u[i]=myfrstfunc(v[i]);
+   }
+return(u)
+}
+abc=myfrstfunc(v)
+print(abc)
+
+2.The lazy evaluation of a function means, the argument is evaluated only if it is evaluated only if it is used
+inside the body of the function. Say True or False.
+Ans : True
+
+3. State True or False:
+a. Insights driven from descriptive analytics is not meaningful - False
+b. The number of values in each Elements of a list, should be equal - False
+c. The datasets are not stored in memory of the computer using R - True
+d. Data frames and matrices are two dimensional however the array is multidimensional - True
