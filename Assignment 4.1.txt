@@ -1,0 +1,39 @@
+1. Histogram for all variables in a dataset mtcars. Write a program to create histograms for all columns.
+
+Ans:
+#Histogram for all variables in mtcars
+library(ggplot2)
+str(mtcars)
+library(Hmisc)
+hist.data.frame(mtcars)
+
+#Histogram for all columns in mtcars
+library(tidyr)
+library(ggplot2)
+mtcars %>%gather()
+ggplot(gather(mtcars), aes(value)) + 
+  geom_histogram(bins = 10) + 
+  facet_wrap(~key, scales = 'free_x')
+
+2. Check the probability distribution of all variables in mtcars
+
+Ans:
+head(mtcars)
+pnorm(mtcars$mpg)
+pnorm(mtcars$cyl)
+pnorm(mtcars$disp)
+pnorm(mtcars$hp)
+pnorm(mtcars$drat)
+pnorm(mtcars$wt)
+pnorm(mtcars$qsec)
+pnorm(mtcars$vs)
+pnorm(mtcars$am)
+pnorm(mtcars$gear)
+pnorm(mtcars$carb)
+
+
+3. Write a program to create boxplot for all variables.
+
+Ans:
+summary(mtcars)
+boxplot(mtcars,col="blue",main="Boxplot for all variable",xlab="Variable",ylab="Boxplot")
