@@ -1,0 +1,22 @@
+1. If Z is norm (mean=0, sd= 1)
+Find P(Z>2.64)
+
+Ans : pnorm(2.64, lower.tail = FALSE)
+
+Find P(|Z| > 1.39)
+
+Ans: 2 * pnorm(-1.39)
+
+2.
+Ans : 
+-qnorm(0.99)
+D = as.data.frame(UCBAdmissions)
+head(D)
+xtabs(Freq ~ Admit, data = D)
+phat = 1755/(1755+2771)
+Q = (phat - 0.4)/sqrt(0.4*0.6/(1755 + 2771))
+Q
+
+[1] -1.680919
+
+Out test data does not fall under the critical region hence we fail to reject the null hypothesis.

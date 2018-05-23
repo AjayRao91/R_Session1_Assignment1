@@ -1,0 +1,16 @@
+1. Finding the P Value.
+Ans :
+H0 -> p=0.4
+H1 -> p<0.4
+for Confidence level 99%
+
+-qnorm(0.99)
+[1] -1.680919
+
+#To find the P-Value
+-qnorm(-1.680919)
+[1] 0.04638392
+
+
+2.
+Ans : prop.test(1755,1755+2771, p=0.4, alternative = "less", conf.level = 0.99, correct = FALSE)
