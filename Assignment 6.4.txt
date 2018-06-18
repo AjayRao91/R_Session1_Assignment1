@@ -1,0 +1,37 @@
+1 Ans:
+
+setwd("~/Desktop/R_intro_2018/Yeast")
+getwd()
+dir(pattern = ".txt")
+yeast_eg = read.table('yeast.txt', header=T)
+
+library(knitr)
+kable(yeast_eg)
+with(yeast_eg,summary(genotype))
+with(yeast_eg, plot(genotype, OD_change))
+with(yeast_eg, plot(drug, OD_change))
+with(yeast_eg, plot(treatment, OD_change, las=3))
+
+##Stastistical test - two-way ANOVA
+
+m1 <- with(yeast_eg, aov(OD_change ~ genotype * drug))
+summary(m1)
+
+par(mfrow=c(2,2))
+plot(m1)
+
+library(ggplot2)
+ggplot(yeast_eg, aes(x = drug, y = OD_change, color = genotype))+
+geom_boxplot()+
+theme_bw()+
+7
+scale_x_discrete('')+
+scale_y_continuous(expression(paste('Growth Rate (', Delta, ' OD600)')))
+
+ggplot(yeast_eg, aes(x = drug, y = OD_change, fill = genotype))+
+geom_boxplot(position=position_dodge(1))+
+theme_bw()+
+scale_x_discrete('')+
+scale_y_continuous(expression(paste('Growth Rate (', Delta, ' OD600)')))+
+theme(legend.position=c(0.8,0.35), panel.border = element_blank(), panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))

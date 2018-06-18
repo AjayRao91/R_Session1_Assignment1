@@ -1,0 +1,17 @@
+1 Ans :
+
+##Outer Join
+
+> merge (x = df1, y = df2, by = "CustId", all = TRUE)
+
+##left OuterJoin 
+
+> merge (x = df1, y = df2, by = "CustId", all.x = TRUE)
+
+#Right Outer Join
+
+> merge (x = df1, y = df2, by = "CustId", all.y = TRUE)
+
+#Inner Join 
+
+> merge (x = df1, y = df2, by = "CustId", all = FALSE)

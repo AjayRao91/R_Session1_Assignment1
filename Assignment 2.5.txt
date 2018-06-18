@@ -1,0 +1,6 @@
+1 Ans:
+
+library(dplyr)
+States = rownames(USArrests)
+starts_with(match = "W",States,ignore.case = TRUE)
+starts_with(match = "w",States,ignore.case = FALSE)

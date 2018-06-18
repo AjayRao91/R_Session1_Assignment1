@@ -1,0 +1,16 @@
+1 Ans :
+
+#Replacing the period character "." within each string with another character i.e. "-" minus sign.
+
+x <- c("data.science.in.R", "machine.learning.in.R")
+gsub(".","-",x,fixed = TRUE)
+
+2 Ans:
+
+#Appending again with “-“ minus sign character at the start of the each string and finally concatenate all the
+string within the vector to form a final single string and assigning it the object.
+
+x <- c("data.science.in.R", "machine.learning.in.R")
+y <- gsub(".","-",x,fixed = TRUE)
+z <- gsub("-","",y,fixed = TRUE)
+z
