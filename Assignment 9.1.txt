@@ -1,0 +1,52 @@
+1 Ans : Unable to download the Weight lifting dataset hence performed the analysis on a diffrent dataset.
+
+library(readr)
+library(caret)
+
+cats <- read_csv("cats.csv")
+attach(cats)
+summary(cats)
+
+plot <- ggplot(data=cats, aes(x=Bwt, y=Hwt, col=Sex.f))
+plot <- plot + geom_point(aes(size = 5))
+plot <- plot + xlab("Height") + ylab("Body Weight") +
+  scale_color_discrete(name = "Gender")
+plot
+
+cats$Sex.f <- factor(cats$Sex)
+contrasts(cats$Sex.f)
+
+inTrain <- createDataPartition(y = cats$Sex.f, p = .60, list = FALSE)
+training <- cats[inTrain,]
+testing <- cats[-inTrain,]
+
+dim(training)
+dim(testing)
+
+cats.fit = glm(Sex.f ~ Bwt + Hwt, data=training, family=binomial)
+summary(cats.fit)
+
+cats.prob = predict(cats.fit, testing, type="response")
+cats.pred = rep("F", dim(training)[1])
+cats.pred[cats.prob > .5] = "M"
+table(cats.pred, training$Sex.f)
+
+mean(cats.pred == training$Sex.f)
+
+mean(cats.pred == training$Sex.f)
+
+1 - mean(cats.pred == training$Sex.f)
+
+predict(cats.fit, newdata=data.frame(Bwt=c(2.8, 1.8), Hwt=c(13, 7)), type="response")
+
+cats.fit = glm(Sex.f ~ Bwt, data=training, family=binomial)
+summary(cats.fit)
+
+cats.prob = predict(cats.fit, testing, type="response")
+cats.pred = rep("F", dim(training)[1])
+cats.pred[cats.prob > .5] = "M"
+table(cats.pred, training$Sex.f)
+
+mean(cats.pred == training$Sex.f)
+
+predict(cats.fit, newdata=data.frame(Bwt=c(2.8, 1.8)), type="response")
